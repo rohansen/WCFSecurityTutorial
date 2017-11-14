@@ -57,7 +57,7 @@ The next step is to configure the service it self, and the associated endpoint, 
 <serviceBehaviors>
     <behavior name="SecureBehavior">
         <serviceMetadata httpGetEnabled="False" httpsGetEnabled="True"/>
-        <serviceDebug includeExceptionDetailInFaults="False" />
+        <serviceDebug includeExceptionDetailInFaults="True" />
         <serviceCredentials>
             <serviceCertificate x509FindType="FindByThumbprint" findValue="DD5A370484E791A6018CDE67A23968C29B2590CB" storeName="My" storeLocation="LocalMachine"/>
         </serviceCredentials>
