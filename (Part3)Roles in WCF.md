@@ -22,7 +22,7 @@ protected override bool CheckAccessCore(OperationContext operationContext)
     //simulate that we get a user and all his roles from the database
     bool? userFound = true;
     string[] userRolesFound = new string[] { "Admin" };
-    if (userFound==null && userFound==false)
+    if (userFound==null || userFound==false)
     {
         throw new Exception("User not found");
     }
