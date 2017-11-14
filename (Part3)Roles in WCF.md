@@ -47,5 +47,5 @@ To apply these roles to your method calls (on our operation contracts), you can 
 
 ### You now have username and password validation, role authorization and an encrypted connection to your web service
 
-## This concludes part 2 of the WCF security tutorial
+## This concludes part 3 of the WCF security tutorial
 
