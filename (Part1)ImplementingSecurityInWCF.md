@@ -23,7 +23,7 @@ Before you move further, you need to acquire a X-509 Certificate.
 # Setting up an X-509 Certificate
 Run the following command in a PowerShell terminal
 ```c#
-New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "cert:\LocalMachine\My" -FriendlyName "UCN Computer Science 3rd Semester" -Subject "Ronni Hansen"
+New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "cert:\LocalMachine\My" -FriendlyName "UCN Computer Science 3rd Semester" -Subject "Ronni Hansen" -KeySpec KeyExchange
 ```
 This will generate a X-509 Certificate with the Microsoft default settings (RSA 2048 bit key, sha256 signature algorithm), and install it to your local keystore at the "LocalMachine\My" location. [(documentation)](https://docs.microsoft.com/en-us/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps)
 
