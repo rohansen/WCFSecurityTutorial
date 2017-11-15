@@ -53,6 +53,15 @@ Because we have added another service, we need to set it up in the ```<system.se
   <serviceDebug includeExceptionDetailInFaults="True" />
 </behavior>
 ```
-Notice this element is very similar to your current ```wsHttpBinding```. The difference here is, that we have removed the ```<userNameAuthentication>``` and the ```<serviceAuthorization>``` to disable credential checking. These are not needed, as we want unauthorized users to be able to call the Login method, to find out if they are allowed in with their credentials.
+Notice this element is very similar to your current ```wsHttpBinding``` configuration. The difference here is, that we have removed the ```<userNameAuthentication>``` and the ```<serviceAuthorization>``` to disable credential checking. These are not needed, as we want unauthorized users to be able to call the Login method, to find out if they are allowed in with their credentials.
   
-  
+ # Step 5 - Configuring the AuthService endpoint
+ Finally, because we have decided to remove the credential validation from the AuthService, we cannot use the currently existing endpoint configuration called SecureEndpoint. Go to <bindings> --> <wsHttpBinding> and add the following.
+```xml
+<binding name="SecureAuthEndpoint">
+  <security mode="Transport">
+    <transport clientCredentialType="None"/>
+  </security>
+</binding>
+```
+Notice that the ```<security mode="Transport">``` is different than the other binding configuration. This time we speficy that the security mode is transport, and that message credentials isn't needed. This means that we don't encrypt the message or use username/password validation. But our connection is still secure, since we have transport security, and a certificate specified in the ```<behavior>``` configuration.
