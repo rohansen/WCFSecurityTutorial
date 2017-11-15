@@ -65,3 +65,41 @@ Notice this element is very similar to your current ```wsHttpBinding``` configur
 </binding>
 ```
 Notice that the ```<security mode="Transport">``` is different than the other binding configuration. This time we speficy that the security mode is transport, and that message credentials isn't needed. This means that we don't encrypt the message or use username/password validation. But our connection is still secure, since we have transport security, and a certificate specified in the ```<behavior>``` configuration.
+  
+# Step 6 - Hosting the new service.
+Go your Console hosting applications Program.cs, and change the Main method as follows:
+```c#
+static void Main(string[] args)
+{
+    ServiceHost host = new ServiceHost(typeof(IService1));
+    ServiceHost authhost = new ServiceHost(typeof(AuthService));
+    host.Open();
+    Console.WriteLine("Service1 host is running...");
+    authhost.Open();
+    Console.WriteLine("AuthService host is running");
+    Console.ReadLine();//Keep program running.
+    host.Close();
+    authhost.Close();
+
+}
+```
+# Step 7 - Testing it all out
+  - Go to your Console Client and add a service reference to the new AuthService (using the ```<baseAddress>``` from your config)
+  - Instantiate a 
+  ```AuthServiceClient authClient = new AuthServiceClient();```
+  - And call the Login method on your service.
+  - If the service returns true, your credentials were validated, and you can now use them to call your Username and password secured service from earlier. It could look something like this:
+```c#
+AuthServiceClient authClient = new AuthServiceClient();
+var isLoggedIn = authClient.Login("SuperStudent", "1234");
+if (isLoggedIn)
+{
+    SecureUserServiceClient client = new SecureUserServiceClient("WSHttpBinding_ISecureUserService");
+    client.ClientCredentials.UserName.UserName = "SuperStudent";
+    client.ClientCredentials.UserName.Password = "1234";
+    var data = client.GetData(1337);
+}
+```
+Run your program and test it out.
+
+This concludes part 4 of the tutorial series
