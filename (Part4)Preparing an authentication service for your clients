@@ -102,4 +102,6 @@ if (isLoggedIn)
 ```
 Run your program and test it out.
 
+### Whenever you call the Login method on the Auth service, you can store the credentials on your client, and pass them along to all of your Service1 calls.
+
 This concludes part 4 of the tutorial series
