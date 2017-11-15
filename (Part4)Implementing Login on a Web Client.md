@@ -44,11 +44,10 @@ Because we have added another service, we need to set it up in the ```<system.se
 ```
 # Step 4 - Configuring the behavior of the AuthService
 - Go to your <behaviors> --> <serviceBehaviors> and add another <behavior> inside this element.
-  ```xml
+```xml
 <behavior name="SecureBevaiorAuth">
   <serviceCredentials>
     <serviceCertificate x509FindType="FindByThumbprint" findValue="86D979B0F41A65D806638558B7C09EDADFD753D8" storeName="My" storeLocation="LocalMachine" />
-
   </serviceCredentials>
   <serviceMetadata httpGetEnabled="False" httpsGetEnabled="True"/>
   <serviceDebug includeExceptionDetailInFaults="True" />
