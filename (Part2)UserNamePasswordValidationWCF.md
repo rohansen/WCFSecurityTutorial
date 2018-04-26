@@ -8,7 +8,7 @@
   - This class does not exist yet, but we are going to create it soon.
   - The value of this parameter ```"ProjectName.MyPasswordValidator, ProjectName"``` is referring the the Fully Qualified Class Name and the service ProjectName(AssemblyName)
 
-  - Find your <bindings> in your Console Hosting application, and add the ```<message clientCredentialType="UserName" />``` element
+  - Find your ```<bindings>``` in your Console Hosting application, and add the ```<message clientCredentialType="UserName" />``` element
   - In your ```<security mode="Transport">```, change the mode to ```TransportWithMessageCredential```
   - This will force your clients to provide at username and password before they are allowed to call the service
 ```xml
