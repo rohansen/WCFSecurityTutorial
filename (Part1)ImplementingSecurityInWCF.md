@@ -27,7 +27,7 @@ New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "cert:\LocalMa
 ```
 This will generate a X-509 Certificate with the Microsoft default settings (RSA 2048 bit key, sha256 signature algorithm), and install it to your local keystore at the "LocalMachine\My" location. [(documentation)](https://docs.microsoft.com/en-us/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps)
 
-  - Open "Run" in windows, type "certmgr" and press return.
+  - Open "Run" in windows, type "certmgr.msc" and press return.
   - Navigate to Certificates->Personal->Certificates and review you new certificate.
 
 # Configuring your host application
